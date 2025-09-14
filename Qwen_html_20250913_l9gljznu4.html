@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Stars | Покупка звезд в Telegram</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #8A2BE2;
+            --primary-blue: #1E90FF;
+            --accent-pink: #FF1493;
+            --accent-yellow: #FFD700;
+            --dark-bg: #0F0F1A;
+            --card-bg: #1A1A2E;
+            --text-light: #FFFFFF;
+            --text-gray: #B0B0C0;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --danger: #F44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(15, 15, 26, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-blue));
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        nav a:hover {
+            color: var(--accent-yellow);
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.1) 0%, rgba(15, 15, 26, 0) 70%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, var(--primary-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text-gray);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.6);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        /* Features Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .section-title h2 span {
+            background: linear-gradient(to right, var(--primary-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tab.active {
+            background: rgba(138, 43, 226, 0.1);
+            color: var(--accent-yellow);
+            border-bottom: 2px solid var(--accent-yellow);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background: rgba(26, 26, 46, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .pricing-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .pricing-header p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .currency-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .currency-btn {
+            background: rgba(138, 43, 226, 0.2);
+            border: none;
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .currency-btn.active {
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-blue));
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .pricing-table th {
+            background: rgba(138, 43, 226, 0.2);
+            padding: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .pricing-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-table tr:hover {
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .stars-amount {
+            font-weight: 700;
+            color: var(--accent-yellow);
+            font-size: 1.2rem;
+        }
+
+        .price-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .ton-price {
+            color: #0088CC;
+        }
+
+        .usd-price {
+            color: #4CAF50;
+        }
+
+        .rub-price {
+            color: #FF9800;
+        }
+
+        .buy-btn {
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        /* Currency Rates */
+        .currency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .currency-card {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.1);
+        }
+
+        .currency-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(138, 43, 226, 0.3);
+        }
+
+        .currency-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .currency-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .currency-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+        }
+
+        .currency-change {
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .change-positive {
+            color: #4CAF50;
+        }
+
+        .change-negative {
+            color: #F44336;
+        }
+
+        /* Payment Section */
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .payment-method {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-yellow);
+        }
+
+        .payment-method.selected {
+            border-color: var(--accent-yellow);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .payment-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--accent-yellow);
+        }
+
+        .payment-name {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .payment-desc {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .bank-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .bank-card {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .bank-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-yellow);
+        }
+
+        .bank-card.selected {
+            border-color: var(--accent-yellow);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .bank-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .bank-name {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .bank-number {
+            font-family: monospace;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .qr-code {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .qr-code p {
+            margin-top: 15px;
+            color: var(--dark-bg);
+            font-weight: 700;
+        }
+
+        .payment-form {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            background: rgba(15, 15, 26, 0.5);
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-yellow);
+        }
+
+        /* How It Works */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 30px;
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .step p {
+            color: var(--text-gray);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: rgba(138, 43, 226, 0.05);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--accent-yellow);
+        }
+
+        .stat-item p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(138, 43, 226, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-yellow);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-purple);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .pricing-table {
+                font-size: 0.9rem;
+            }
+            
+            .pricing-table th, .pricing-table td {
+                padding: 10px 5px;
+            }
+            
+            .cta-section {
+                padding: 40px 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(26, 26, 46, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-purple), var(--primary-blue));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-purple);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            z-index: 10000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.success {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+        }
+
+        .notification.error {
+            background: linear-gradient(45deg, #F44336, #E91E63);
+        }
+
+        .notification.info {
+            background: linear-gradient(45deg, #2196F3, #03A9F4);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Badge Styles */
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0 5px;
+        }
+
+        .badge.new {
+            background: var(--accent-yellow);
+            color: var(--dark-bg);
+        }
+
+        .badge.popular {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .badge.premium {
+            background: linear-gradient(45deg, var(--primary-purple), var(--accent-pink));
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="logo-text">Telegram Stars</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#pricing">Цены</a></li>
+                    <li><a href="#currencies">Курсы валют</a></li>
+                    <li><a href="#payment">Оплата</a></li>
+                    <li><a href="#stats">Статистика</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Покупка <span>звезд</span> в Telegram</h1>
+            <p>Мгновенная доставка, лучшие цены и 100% гарантия возврата средств</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="cta-button">Купить звезды</a>
+                <a href="#payment" class="cta-button secondary">Оплатить</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Цены на <span>звезды</span></h2>
+                <p>Выберите подходящий пакет звезд для ваших нужд</p>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab tab-pricing active">Пакеты звезд</div>
+                <div class="tab tab-currencies">Курсы валют</div>
+                <div class="tab tab-payment">Оплата</div>
+            </div>
+            
+            <div class="tab-content tab-content-pricing active">
+                <div class="pricing-section">
+                    <div class="pricing-header">
+                        <h2>Тарифы на звезды</h2>
+                        <p>Выберите подходящий пакет звезд для ваших нужд</p>
+                        
+                        <div class="currency-selector">
+                            <button class="currency-btn currency-ton active">TON</button>
+                            <button class="currency-btn currency-usd">USD</button>
+                            <button class="currency-btn currency-rub">RUB</button>
+                        </div>
+                    </div>
+                    
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Количество звезд</th>
+                                <th>Цена в TON</th>
+                                <th>Цена в USD</th>
+                                <th>Цена в RUB</th>
+                                <th>Действие</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="stars-amount">50⭐</span></td>
+                                <td class="price ton-price">0.4 TON</td>
+                                <td class="price usd-price">$1.50</td>
+                                <td class="price rub-price">₽120.96</td>
+                                <td><button class="buy-btn buy-50">Выбрать</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="stars-amount">100⭐</span></td>
+                                <td class="price ton-price">0.6 TON</td>
+                                <td class="price usd-price">$2.00</td>
+                                <td class="price rub-price">₽170.44</td>
+                                <td><button class="buy-btn buy-100">Выбрать</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="stars-amount">250⭐</span></td>
+                                <td class="price ton-price">1.3 TON</td>
+                                <td class="price usd-price">$4.50</td>
+                                <td class="price rub-price">₽345.12</td>
+                                <td><button class="buy-btn buy-250">Выбрать</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="stars-amount">500⭐</span></td>
+                                <td class="price ton-price">2.5 TON</td>
+                                <td class="price usd-price">$8.10</td>
+                                <td class="price rub-price">₽670.00</td>
+                                <td><button class="buy-btn buy-500">Выбрать</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="stars-amount">1000⭐</span></td>
+                                <td class="price ton-price">4.9 TON</td>
+                                <td class="price usd-price">$15.60</td>
+                                <td class="price rub-price">₽1,255.76</td>
+                                <td><button class="buy-btn buy-1000">Выбрать</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="stars-amount">2000⭐</span></td>
+                                <td class="price ton-price">9.7 TON</td>
+                                <td class="price usd-price">$30.70</td>
+                                <td class="price rub-price">₽2,500.28</td>
+                                <td><button class="buy-btn buy-2000">Выбрать</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="tab-content tab-content-currencies">
+                <div class="section-title">
+                    <h2>Курсы <span>валют и криптовалют</span></h2>
+                    <p>Актуальные курсы обмена на сегодня</p>
+                </div>
+                
+                <div class="currency-grid">
+                    <div class="currency-card">
+                        <div class="currency-icon">
+                            <i class="fab fa-telegram" style="color: #0088cc;"></i>
+                        </div>
+                        <div class="currency-name">TON</div>
+                        <div class="currency-value">1 TON = 2.15 USD</div>
+                        <div class="currency-change change-positive">+2.5%</div>
+                    </div>
+                    
+                    <div class="currency-card">
+                        <div class="currency-icon">
+                            <i class="fas fa-dollar-sign" style="color: #4CAF50;"></i>
+                        </div>
+                        <div class="currency-name">USD</div>
+                        <div class="currency-value">1 USD = 93.45 RUB</div>
+                        <div class="currency-change change-negative">-0.3%</div>
+                    </div>
+                    
+                    <div class="currency-card">
+                        <div class="currency-icon">
+                            <i class="fas fa-euro-sign" style="color: #FF9800;"></i>
+                        </div>
+                        <div class="currency-name">EUR</div>
+                        <div class="currency-value">1 EUR = 101.23 RUB</div>
+                        <div class="currency-change change-positive">+0.7%</div>
+                    </div>
+                    
+                    <div class="currency-card">
+                        <div class="currency-icon">
+                            <i class="fab fa-bitcoin" style="color: #F2A900;"></i>
+                        </div>
+                        <div class="currency-name">BTC</div>
+                        <div class="currency-value">1 BTC = 63,450 USD</div>
+                        <div class="currency-change change-positive">+1.2%</div>
+                    </div>
+                    
+                    <div class="currency-card">
+                        <div class="currency-icon">
+                            <i class="fab fa-ethereum" style="color: #8A2BE2;"></i>
+                        </div>
+                        <div class="currency-name">ETH</div>
+                        <div class="currency-value">1 ETH = 3,420 USD</div>
+                        <div class="currency-change change-negative">-0.8%</div>
+                    </div>
+                    
+                    <div class="currency-card">
+                        <div class="currency-icon">
+                            <i class="fas fa-coins" style="color: #FF1493;"></i>
+                        </div>
+                        <div class="currency-name">USDT</div>
+                        <div class="currency-value">1 USDT = 1.00 USD</div>
+                        <div class="currency-change change-positive">+0.1%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content tab-content-payment">
+                <div class="section-title">
+                    <h2>Оплата <span>звезд</span></h2>
+                    <p>Выберите удобный способ оплаты</p>
+                </div>
+                
+                <div class="payment-methods">
+                    <div class="payment-method payment-sbp">
+                        <div class="payment-icon">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <div class="payment-name">СБП (QR-код)</div>
+                        <div class="payment-desc">Оплата по QR-коду через Систему быстрых платежей</div>
+                    </div>
+                    
+                    <div class="payment-method payment-card">
+                        <div class="payment-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="payment-name">Банковская карта</div>
+                        <div class="payment-desc">Оплата банковской картой любого российского банка</div>
+                    </div>
+                </div>
+                
+                <div id="sbp-payment" style="display: none;">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=SBP_PAYMENT_TELEGRAM_STARS" alt="QR-код для оплаты">
+                        <p>Отсканируйте QR-код для оплаты через СБП</p>
+                    </div>
+                    <p style="text-align: center; margin-top: 20px;">
+                        После оплаты нажмите кнопку "Проверить оплату"
+                    </p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="cta-button" id="check-payment-btn">Проверить оплату</button>
+                    </div>
+                </div>
+                
+                <div id="card-payment" style="display: none;">
+                    <div class="section-title">
+                        <h3>Выберите банковскую карту</h3>
+                    </div>
+                    
+                    <div class="bank-cards">
+                        <div class="bank-card bank-sber">
+                            <div class="bank-logo" style="background: #52A353;">
+                                <span>СБЕР</span>
+                            </div>
+                            <div class="bank-name">Сбербанк</div>
+                            <div class="bank-number">**** 4567</div>
+                        </div>
+                        
+                        <div class="bank-card bank-tbank">
+                            <div class="bank-logo" style="background: #FFCC00;">
+                                <span>T-BANK</span>
+                            </div>
+                            <div class="bank-name">Т-Банк</div>
+                            <div class="bank-number">**** 1234</div>
+                        </div>
+                        
+                        <div class="bank-card bank-vtb">
+                            <div class="bank-logo" style="background: #00A0E3;">
+                                <span>ВТБ</span>
+                            </div>
+                            <div class="bank-name">ВТБ</div>
+                            <div class="bank-number">**** 7890</div>
+                        </div>
+                        
+                        <div class="bank-card bank-alfa">
+                            <div class="bank-logo" style="background: #E6232D;">
+                                <span>АЛЬФА</span>
+                            </div>
+                            <div class="bank-name">Альфа-Банк</div>
+                            <div class="bank-number">**** 2345</div>
+                        </div>
+                        
+                        <div class="bank-card bank-gazprom">
+                            <div class="bank-logo" style="background: #0053A0;">
+                                <span>ГАЗПРОМ</span>
+                            </div>
+                            <div class="bank-name">Газпромбанк</div>
+                            <div class="bank-number">**** 6789</div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-form">
+                        <div class="form-group">
+                            <label for="card-number">Номер карты</label>
+                            <input type="text" id="card-number" class="form-control" placeholder="0000 0000 0000 0000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="card-expiry">Срок действия</label>
+                            <input type="text" id="card-expiry" class="form-control" placeholder="ММ/ГГ">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="card-cvv">CVV</label>
+                            <input type="text" id="card-cvv" class="form-control" placeholder="123">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="card-holder">Имя держателя карты</label>
+                            <input type="text" id="card-holder" class="form-control" placeholder="Иванов Иван">
+                        </div>
+                        
+                        <button class="cta-button" style="width: 100%;" id="process-card-payment">Оплатить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Как <span>купить</span> звезды</h2>
+                <p>Просто следуйте этим шагам для получения звезд</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Выберите тариф</h3>
+                    <p>Выберите подходящий пакет звезд из нашего каталога</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Оформите заказ</h3>
+                    <p>Укажите ваш Telegram ID и способ оплаты</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Оплатите заказ</h3>
+                    <p>Оплатите выбранный пакет удобным способом</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Получите звезды</h3>
+                    <p>Звезды будут доставлены на ваш аккаунт в течение 5 минут</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section" id="stats">
+        <div class="container">
+            <div class="stats">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>15K+</h3>
+                        <p>Довольных клиентов</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>1M+</h3>
+                        <p>Проданных звезд</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99.9%</h3>
+                        <p>Время доставки < 5 мин</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Поддержка клиентов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Готовы начать?</h2>
+                <p>Купите звезды прямо сейчас и получите 10% скидку на первый заказ!</p>
+                <a href="#pricing" class="cta-button">Купить звезды</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Telegram Stars</h3>
+                    <p>Надежный сервис для покупки звезд в Telegram с мгновенной доставкой и лучшими ценами.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="#">Покупка звезд</a></li>
+                        <li><a href="#">Подарочные сертификаты</a></li>
+                        <li><a href="#">Корпоративные решения</a></li>
+                        <li><a href="#">API интеграция</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Блог</a></li>
+                        <li><a href="#">Партнерская программа</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@telegramstars.ru</li>
+                        <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
+                        <li><i class="fas fa-comments"></i> @TelegramStarsSupport</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Telegram Stars. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Функция переключения вкладок
+        function initTabs() {
+            // Получаем все вкладки
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // Добавляем обработчики событий для вкладок
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Убираем класс active у всех вкладок
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Добавляем класс active к кликнутой вкладке
+                    this.classList.add('active');
+                    
+                    // Получаем тип вкладки
+                    const tabType = this.classList[1].split('-')[1];
+                    
+                    // Скрываем все содержимое вкладок
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Показываем содержимое соответствующей вкладки
+                    document.querySelector(`.tab-content-${tabType}`).classList.add('active');
+                });
+            });
+        }
+        
+        // Функция переключения валют
+        function initCurrencySwitcher() {
+            const currencyButtons = document.querySelectorAll('.currency-btn');
+            
+            currencyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Убираем класс active у всех кнопок
+                    currencyButtons.forEach(btn => btn.classList.remove('active'));
+                    // Добавляем класс active к кликнутой кнопке
+                    this.classList.add('active');
+                    
+                    // Показываем уведомление
+                    const currency = this.classList[1].split('-')[1].toUpperCase();
+                    showNotification(`Цены отображаются в ${currency}`, 'info');
+                });
+            });
+        }
+        
+        // Функция выбора пакета
+        function initBuyButtons() {
+            const buyButtons = document.querySelectorAll('.buy-btn');
+            
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Получаем количество звезд из класса кнопки
+                    const amount = this.classList[1].split('-')[1];
+                    
+                    // Показываем уведомление
+                    showNotification(`Вы выбрали ${amount} звезд. Перейдите на вкладку "Оплата" для завершения покупки.`, 'success');
+                    
+                    // Автоматически переключаемся на вкладку оплаты через 1.5 секунды
+                    setTimeout(() => {
+                        document.querySelector('.tab-payment').click();
+                    }, 1500);
+                });
+            });
+        }
+        
+        // Функция выбора способа оплаты
+        function initPaymentMethods() {
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // Убираем класс selected у всех методов
+                    paymentMethods.forEach(m => m.classList.remove('selected'));
+                    // Добавляем класс selected к кликнутому методу
+                    this.classList.add('selected');
+                    
+                    // Получаем тип метода
+                    const methodType = this.classList[1].split('-')[1];
+                    
+                    // Скрываем все способы оплаты
+                    document.getElementById('sbp-payment').style.display = 'none';
+                    document.getElementById('card-payment').style.display = 'none';
+                    
+                    // Показываем выбранный способ оплаты
+                    if (methodType === 'sbp') {
+                        document.getElementById('sbp-payment').style.display = 'block';
+                    } else if (methodType === 'card') {
+                        document.getElementById('card-payment').style.display = 'block';
+                    }
+                });
+            });
+        }
+        
+        // Функция выбора банковской карты
+        function initBankCards() {
+            const bankCards = document.querySelectorAll('.bank-card');
+            
+            bankCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Убираем класс selected у всех карт
+                    bankCards.forEach(c => c.classList.remove('selected'));
+                    // Добавляем класс selected к кликнутой карте
+                    this.classList.add('selected');
+                    
+                    // Получаем название банка
+                    const bankName = this.querySelector('.bank-name').textContent;
+                    
+                    // Показываем уведомление
+                    showNotification(`Выбрана карта банка: ${bankName}`, 'info');
+                });
+            });
+        }
+        
+        // Функция проверки оплаты
+        function initPaymentCheck() {
+            const checkButton = document.getElementById('check-payment-btn');
+            if (checkButton) {
+                checkButton.addEventListener('click', function() {
+                    showNotification('Проверяем оплату... Это может занять несколько секунд.', 'info');
+                    setTimeout(() => {
+                        showNotification('Оплата успешно подтверждена! Звезды будут доставлены в течение 5 минут.', 'success');
+                    }, 3000);
+                });
+            }
+        }
+        
+        // Функция обработки оплаты картой
+        function initCardPayment() {
+            const payButton = document.getElementById('process-card-payment');
+            if (payButton) {
+                payButton.addEventListener('click', function() {
+                    const cardNumber = document.getElementById('card-number').value;
+                    const cardExpiry = document.getElementById('card-expiry').value;
+                    const cardCvv = document.getElementById('card-cvv').value;
+                    const cardHolder = document.getElementById('card-holder').value;
+                    
+                    if (!cardNumber || !cardExpiry || !cardCvv || !cardHolder) {
+                        showNotification('Пожалуйста, заполните все поля формы', 'error');
+                        return;
+                    }
+                    
+                    showNotification('Обрабатываем платеж... Это может занять несколько секунд.', 'info');
+                    setTimeout(() => {
+                        showNotification('Платеж успешно обработан! Звезды будут доставлены в течение 5 минут.', 'success');
+                    }, 3000);
+                });
+            }
+        }
+        
+        // Функция показа уведомлений
+        function showNotification(message, type = 'info') {
+            // Создаем элемент уведомления
+            const notification = document.createElement('div');
+            notification.className = `notification ${type} show`;
+            notification.textContent = message;
+            
+            // Добавляем уведомление в body
+            document.body.appendChild(notification);
+            
+            // Удаляем уведомление через 3 секунды
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Инициализация всех функций при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            initTabs();
+            initCurrencySwitcher();
+            initBuyButtons();
+            initPaymentMethods();
+            initBankCards();
+            initPaymentCheck();
+            initCardPayment();
+            
+            // Добавляем плавающую анимацию к элементам
+            const floatingElements = document.querySelectorAll('.step-number, .stat-item, .currency-card');
+            floatingElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+                el.classList.add('floating');
+            });
+        });
+        
+        // Плавная прокрутка для навигационных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
